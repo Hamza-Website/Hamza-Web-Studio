@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamza Dev Links</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+    --bg:#05070d;
+    --card:rgba(12,18,32,.76);
+    --line:rgba(120,180,255,.18);
+    --text:#f5f7ff;
+    --muted:#91a0b8;
+    --blue:#38bdf8;
+    --green:#22c55e;
+    --violet:#8b5cf6;
+}
+body{
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 20% 10%,rgba(56,189,248,.18),transparent 30%),
+        radial-gradient(circle at 80% 15%,rgba(139,92,246,.18),transparent 28%),
+        linear-gradient(135deg,#03040a,#07101e 55%,#05070d);
+    display:flex;
+    justify-content:center;
+    padding:34px 14px;
+}
+.bg-grid{
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:38px 38px;
+    mask-image:linear-gradient(to bottom, black, transparent);
+    pointer-events:none;
+}
+.wrap{width:100%;max-width:500px;position:relative;z-index:2}
+.card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:30px;
+    padding:26px;
+    box-shadow:0 30px 90px rgba(0,0,0,.45);
+    backdrop-filter:blur(16px);
+}
+.top{
+    display:flex;
+    gap:16px;
+    align-items:center;
+    margin-bottom:22px;
+}
+.avatar{
+    width:86px;
+    height:86px;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 0 35px rgba(56,189,248,.25);
+}
+
+.avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+h1{font-size:30px;line-height:1}
+.tag{margin-top:8px;color:var(--blue);font-weight:bold}
+.bio{
+    color:var(--muted);
+    line-height:1.6;
+    margin-bottom:20px;
+}
+.status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#bfffd4;
+    background:rgba(34,197,94,.08);
+    border:1px solid rgba(34,197,94,.18);
+    padding:11px 13px;
+    border-radius:16px;
+    margin-bottom:18px;
+    font-size:14px;
+}
+.dot{
+    width:9px;height:9px;border-radius:50%;background:var(--green);
+    box-shadow:0 0 14px var(--green);
+}
+.link{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:18px;
+    padding:15px;
+    margin:11px 0;
+    transition:.22s;
+}
+.link:hover{
+    transform:translateY(-3px);
+    border-color:rgba(56,189,248,.55);
+    background:rgba(56,189,248,.08);
+}
+.left{display:flex;align-items:center;gap:13px;text-align:left}
+.icon{
+    width:44px;height:44px;border-radius:15px;
+    display:grid;place-items:center;
+    background:rgba(56,189,248,.10);
+    border:1px solid rgba(56,189,248,.20);
+    font-size:20px;
+}
+small{color:var(--muted)}
+.arrow{color:var(--blue);font-weight:900}
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:20px 0;
+}
+.skill{
+    padding:8px 11px;
+    border-radius:999px;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.09);
+    color:#dce7ff;
+    font-size:13px;
+}
+.cta-box{
+    margin-top:20px;
+    border-radius:22px;
+    padding:18px;
+    background:linear-gradient(135deg,rgba(56,189,248,.12),rgba(139,92,246,.12));
+    border:1px solid rgba(56,189,248,.22);
+}
+.cta-box b{display:block;margin-bottom:8px;font-size:18px}
+.cta-box p{color:var(--muted);line-height:1.5;font-size:14px}
+.btn{
+    display:block;
+    margin-top:14px;
+    text-align:center;
+    text-decoration:none;
+    color:#03111f;
+    font-weight:900;
+    padding:13px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#38bdf8,#22c55e);
+}
+.footer{text-align:center;color:#69758c;font-size:13px;margin-top:18px}
+.terminal{
+    margin-bottom:18px;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.09);
+    background:#020617;
+}
+.bar{
+    height:36px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:0 13px;
+    background:rgba(255,255,255,.04);
+}
+.circle{width:10px;height:10px;border-radius:50%;background:#ef4444}
+.circle:nth-child(2){background:#f59e0b}
+.circle:nth-child(3){background:#22c55e}
+.code{
+    padding:15px;
+    color:#b6e7ff;
+    font-family:Consolas,monospace;
+    font-size:14px;
+    line-height:1.7;
+}
+.code span{color:#22c55e}
+@media(max-width:480px){
+    .top{align-items:flex-start}
+    h1{font-size:26px}
+    .avatar{width:76px;height:76px}
+}
+.icon img{
+    width:24px;
+    height:24px;
+    object-fit:contain;
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+
+<main class="wrap">
+    <div class="terminal">
+        <div class="bar">
+            <div class="circle"></div><div class="circle"></div><div class="circle"></div>
+        </div>
+        <div class="code">
+            <span>$</span> whoami<br>
+            Hamza — Web Developer<br>
+            <span>$</span> status<br>
+            Available for freelance projects
+        </div>
+    </div>
+
+    <section class="card">
+        <div class="top">
+            <div class="avatar">
+    <img src="hamza.jpg" alt="Hamza">
+</div>
+            <div>
+                <h1>Hamza Elghachi</h1>
+                <div class="tag">Web Developer • Full Stack</div>
+            </div>
+        </div>
+
+        <p class="bio">
+            I build modern websites, landing pages, portfolios and business pages with clean UI,
+            responsive design and smooth animations.
+        </p>
+
+        <div class="status"><div class="dot"></div> Available for new projects</div>
+
+        <div class="skills">
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">UI Design</div>
+            <div class="skill">Landing Pages</div>
+            <div class="skill">Responsive</div>
+        </div>
+
+        <!-- بدل الروابط هنا -->
+        <a class="link" href="https://wa.me/212708287567">
+    <div class="left">
+        <div class="icon">
+            <img src="whatsapp.png" alt="WhatsApp">
+        </div>
+        <div>
+            <b>WhatsApp</b><br>
+            <small>Contact me</small>
+        </div>
+    </div>
+    <div class="arrow">→</div>
+</a>
+
+        <a class="link" href="https://wa.me/212708287567?https://wa.me/212708287567?text=Hello%20Hamza,%0A%0AI'm%20interested%20and%20I%20would%20like%20to%20see%20your%20portfolio%20and%20previous%20projects.%0A%0ACould%20you%20please%20send%20me%20some%20examples%20of%20your%20work%3F%0A%0AThank%20you.." target="_blank">
+            <div class="left">
+                <div class="icon">
+                    <img src="profil.png" alt="Portfolio">
+                </div>
+                <div><b>Portfolio</b><br><small>My best web projects</small></div>
+            </div>
+            <div class="arrow">→</div>
+        </a>
+
+        <a class="link" href="https://hamza-website.github.io/Landing-page/" target="_blank">
+            <div class="left">
+                <div class="icon">
+                    <img src="landing-page.png" alt="Landing Page">
+                </div>
+                <div><b>Landing Page Service</b><br><small>Modern page for your business</small></div>
+            </div>
+            <div class="arrow">→</div>
+        </a>
+
+        <a class="link" href="https://github.com/Hamza-Website" target="_blank">
+    <div class="left">
+        <div class="icon">
+            <img src="github.png" alt="GitHub">
+        </div>
+        <div>
+            <b>GitHub</b><br>
+            <small>Code and projects</small>
+        </div>
+    </div>
+    <div class="arrow">→</div>
+</a>
+
+        <a class="link" href="https://www.instagram.com/hamza__elghachi?igsh=MTFpeWdtdWNlbWMyaw==" target="_blank">
+            <div class="left">
+                <div class="icon">
+                    <img src="instagram.png" alt="Instagram">
+                </div>
+                <div><b>Instagram</b><br><small>Designs and updates</small></div>
+            </div>
+            <div class="arrow">→</div>
+        </a>
+
+        <div class="cta-box">
+            <b>Need a website?</b>
+            <p>
+                Send me your idea, colors, text and photos. I can build a clean page for your business or personal brand.
+            </p>
+            <a class="btn" href="https://wa.me/212708287567?text=Hello%20Hamza,%0A%0AI'm%20interested%20in%20your%20services." target="_blank">
+                Start a project
+            </a>
+        </div>
+
+        <div class="footer">© 2026 Hamza Dev Links</div>
+    </section>
+</main>
+</body>
+</html>
